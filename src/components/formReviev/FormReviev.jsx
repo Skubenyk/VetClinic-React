@@ -2,7 +2,7 @@
 
 // *Import base
 import styles from './../review/review.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const FormReviev = ({ addReviev }) => {
   const [userName, setuserName] = useState('');
@@ -11,15 +11,28 @@ export const FormReviev = ({ addReviev }) => {
   const handlerSubmit = (e) => {
     e.preventDefault();
     addReviev(userName, text);
+    localStorage.setItem('userName', JSON.stringify(userName));
+    localStorage.setItem('text', JSON.stringify(text));
     setuserName('');
     setText('');
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem('userName', JSON.stringify(userName));
+  //   localStorage.setItem('text', JSON.stringify(text));
+  // }, [userName, text]);
+
+  useEffect(() => {
+    setuserName(JSON.parse(localStorage.getItem('userName')));
+    setText(JSON.parse(localStorage.getItem('text')));
+  }, []);
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handlerSubmit(e);
     }
   };
+
   return (
     <>
       {/* Form */}

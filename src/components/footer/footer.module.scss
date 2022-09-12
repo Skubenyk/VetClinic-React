@@ -198,5 +198,6 @@
 // Hover effect
 .icon:hover {
   transform: scale(1.15);
+  transition: 1.2s;
   color: $c-orange;
 }

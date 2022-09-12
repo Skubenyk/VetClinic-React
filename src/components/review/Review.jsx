@@ -22,9 +22,6 @@ const Reviev = () => {
       setRevievs([...revievs, newItem]);
     }
   };
-  // useEffect(() => {
-  //   localStorage.setItem('key', JSON.stringify(revievs));
-  // }, [key, revievs]);
 
   return (
     <>
