@@ -10,7 +10,15 @@ import { FormReviev } from './../formReviev/FormReviev';
 import { RevievList } from './../revievList/RevievList';
 
 const Reviev = () => {
-  const [revievs, setRevievs] = useState([]);
+  const GetRevievs = () => {
+    let localStorageRevievs = localStorage.getItem('revievs');
+    if (!localStorageRevievs) {
+      return [];
+    }
+    return JSON.parse(localStorageRevievs);
+  };
+
+  const [revievs, setRevievs] = useState(GetRevievs());
 
   const addReviev = (userName, text) => {
     if ((userName, text)) {
@@ -20,6 +28,7 @@ const Reviev = () => {
         text: text,
       };
       setRevievs([...revievs, newItem]);
+      localStorage.setItem('revievs', JSON.stringify([...revievs, newItem]));
     }
   };
 
