@@ -19,4 +19,4 @@ jobs:
       - name: instal modules 
         run: npm instal
       - name: build project
-        run: npm run build
+        run: CI='' npm run build
